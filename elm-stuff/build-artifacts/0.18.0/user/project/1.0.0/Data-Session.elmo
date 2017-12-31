@@ -1,0 +1,30 @@
+var _user$project$Data_Session$attempt = F3(
+	function (attemptedAction, toCmd, session) {
+		var _p0 = A2(
+			_elm_lang$core$Maybe$map,
+			function (_) {
+				return _.token;
+			},
+			session.user);
+		if (_p0.ctor === 'Nothing') {
+			return A2(
+				_user$project$Util_ops['=>'],
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$core$Basics_ops['++'],
+						'You have been signed out. Please sign back in to ',
+						A2(_elm_lang$core$Basics_ops['++'], attemptedAction, '.')),
+					_1: {ctor: '[]'}
+				},
+				_elm_lang$core$Platform_Cmd$none);
+		} else {
+			return A2(
+				_user$project$Util_ops['=>'],
+				{ctor: '[]'},
+				toCmd(_p0._0));
+		}
+	});
+var _user$project$Data_Session$Session = function (a) {
+	return {user: a};
+};

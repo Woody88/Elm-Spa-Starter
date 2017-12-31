@@ -1,0 +1,42 @@
+var _user$project$Route_State$matchers = _evancz$url_parser$UrlParser$oneOf(
+	{
+		ctor: '::',
+		_0: A2(_evancz$url_parser$UrlParser$map, _user$project$Route_Types$HomeRoute, _evancz$url_parser$UrlParser$top),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_evancz$url_parser$UrlParser$map,
+				_user$project$Route_Types$AboutRoute,
+				_evancz$url_parser$UrlParser$s('about')),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Route_State$parseLocation = function (location) {
+	var _p0 = A2(_evancz$url_parser$UrlParser$parsePath, _user$project$Route_State$matchers, location);
+	if (_p0.ctor === 'Just') {
+		return _p0._0;
+	} else {
+		return _user$project$Route_Types$NotFoundRoute;
+	}
+};
+var _user$project$Route_State$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		if (_p1.ctor === 'ChangeLocation') {
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				model,
+				{
+					ctor: '::',
+					_0: _elm_lang$navigation$Navigation$newUrl(_p1._0),
+					_1: {ctor: '[]'}
+				});
+		} else {
+			var newRoute = _user$project$Route_State$parseLocation(_p1._0);
+			return A2(
+				_elm_lang$core$Platform_Cmd_ops['!'],
+				newRoute,
+				{ctor: '[]'});
+		}
+	});
+var _user$project$Route_State$init = _user$project$Route_Types$HomeRoute;

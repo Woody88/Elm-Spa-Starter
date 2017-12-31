@@ -1,0 +1,6 @@
+var _user$project$Ports$storeSession = _elm_lang$core$Native_Platform.outgoingPort(
+	'storeSession',
+	function (v) {
+		return (v.ctor === 'Nothing') ? null : v._0;
+	});
+var _user$project$Ports$onSessionChange = _elm_lang$core$Native_Platform.incomingPort('onSessionChange', _elm_lang$core$Json_Decode$value);

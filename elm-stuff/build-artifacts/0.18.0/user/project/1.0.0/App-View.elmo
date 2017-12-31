@@ -1,0 +1,38 @@
+var _user$project$App_View$viewPage = F3(
+	function (session, isLoading, page) {
+		var frame = A2(_user$project$Views_Page$frame, isLoading, session.user);
+		var _p0 = page;
+		switch (_p0.ctor) {
+			case 'NotFound':
+				return A2(
+					frame,
+					_user$project$Views_Page$Other,
+					_user$project$Page_NotFound$view(session));
+			case 'Blank':
+				return A2(
+					frame,
+					_user$project$Views_Page$Other,
+					_elm_lang$html$Html$text(''));
+			case 'Errored':
+				return A2(
+					frame,
+					_user$project$Views_Page$Other,
+					A2(_user$project$Page_Errored$view, session, _p0._0));
+			default:
+				return A2(
+					_elm_lang$html$Html$map,
+					_user$project$App_Types$HomeMsg,
+					A2(
+						frame,
+						_user$project$Views_Page$Home,
+						A2(_user$project$Page_Home$view, session, _p0._0)));
+		}
+	});
+var _user$project$App_View$view = function (model) {
+	var _p1 = model.pageState;
+	if (_p1.ctor === 'Loaded') {
+		return A3(_user$project$App_View$viewPage, model.session, false, _p1._0);
+	} else {
+		return A3(_user$project$App_View$viewPage, model.session, true, _p1._0);
+	}
+};

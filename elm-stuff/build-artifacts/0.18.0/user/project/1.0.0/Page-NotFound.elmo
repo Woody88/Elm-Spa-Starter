@@ -1,0 +1,6 @@
+var _user$project$Page_NotFound$view = function (session) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{ctor: '[]'});
+};

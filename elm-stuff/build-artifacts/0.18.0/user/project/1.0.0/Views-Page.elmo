@@ -1,0 +1,23 @@
+var _user$project$Views_Page$bodyId = 'page-body';
+var _user$project$Views_Page$isActive = F2(
+	function (page, route) {
+		var _p0 = {ctor: '_Tuple2', _0: page, _1: route};
+		if ((_p0.ctor === '_Tuple2') && (_p0._0.ctor === 'Home')) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var _user$project$Views_Page$frame = F4(
+	function (isLoading, user, page, content) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('page-frame'),
+				_1: {ctor: '[]'}
+			},
+			{ctor: '[]'});
+	});
+var _user$project$Views_Page$Home = {ctor: 'Home'};
+var _user$project$Views_Page$Other = {ctor: 'Other'};

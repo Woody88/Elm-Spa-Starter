@@ -1,0 +1,21 @@
+var _user$project$Data_AuthToken$withAuthorization = F2(
+	function (maybeToken, builder) {
+		var _p0 = maybeToken;
+		if (_p0.ctor === 'Just') {
+			return A3(
+				_lukewestby$elm_http_builder$HttpBuilder$withHeader,
+				'authorization',
+				A2(_elm_lang$core$Basics_ops['++'], 'Token ', _p0._0._0),
+				builder);
+		} else {
+			return builder;
+		}
+	});
+var _user$project$Data_AuthToken$encode = function (_p1) {
+	var _p2 = _p1;
+	return _elm_lang$core$Json_Encode$string(_p2._0);
+};
+var _user$project$Data_AuthToken$AuthToken = function (a) {
+	return {ctor: 'AuthToken', _0: a};
+};
+var _user$project$Data_AuthToken$decoder = A2(_elm_lang$core$Json_Decode$map, _user$project$Data_AuthToken$AuthToken, _elm_lang$core$Json_Decode$string);

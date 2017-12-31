@@ -1,0 +1,65 @@
+var _user$project$Example$viewTest = A2(
+	_elm_community$elm_test$Test$describe,
+	'Testing view function',
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_community$elm_test$Test$test,
+			'Button has the expected text',
+			function (_p0) {
+				var _p1 = _p0;
+				return A2(
+					_eeue56$elm_html_test$Test_Html_Query$has,
+					{
+						ctor: '::',
+						_0: _eeue56$elm_html_test$Test_Html_Selector$text('+ 1'),
+						_1: {ctor: '[]'}
+					},
+					A2(
+						_eeue56$elm_html_test$Test_Html_Query$find,
+						{
+							ctor: '::',
+							_0: _eeue56$elm_html_test$Test_Html_Selector$tag('button'),
+							_1: {ctor: '[]'}
+						},
+						_eeue56$elm_html_test$Test_Html_Query$fromHtml(
+							_user$project$App$view(0))));
+			}),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Example$fuzzTest = A2(
+	_elm_community$elm_test$Test$describe,
+	'simple fuzz test',
+	{
+		ctor: '::',
+		_0: A3(
+			_elm_community$elm_test$Test$fuzz,
+			_elm_community$elm_test$Fuzz$int,
+			'Inc ALWAYS adds one',
+			function (model) {
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					model + 1,
+					_elm_lang$core$Tuple$first(
+						A2(_user$project$App$update, _user$project$App$Inc, model)));
+			}),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Example$unitTest = A2(
+	_elm_community$elm_test$Test$describe,
+	'simple unit test',
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_community$elm_test$Test$test,
+			'Inc adds one',
+			function (_p2) {
+				var _p3 = _p2;
+				return A2(
+					_elm_community$elm_test$Expect$equal,
+					1,
+					_elm_lang$core$Tuple$first(
+						A2(_user$project$App$update, _user$project$App$Inc, 0)));
+			}),
+		_1: {ctor: '[]'}
+	});

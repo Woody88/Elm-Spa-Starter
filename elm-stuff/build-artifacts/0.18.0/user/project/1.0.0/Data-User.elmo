@@ -1,0 +1,98 @@
+var _user$project$Data_User$usernameToHtml = function (_p0) {
+	var _p1 = _p0;
+	return _elm_lang$html$Html$text(_p1._0);
+};
+var _user$project$Data_User$encodeUsername = function (_p2) {
+	var _p3 = _p2;
+	return _elm_lang$core$Json_Encode$string(_p3._0);
+};
+var _user$project$Data_User$usernameToString = function (_p4) {
+	var _p5 = _p4;
+	return _p5._0;
+};
+var _user$project$Data_User$encode = function (user) {
+	return _elm_lang$core$Json_Encode$object(
+		{
+			ctor: '::',
+			_0: A2(
+				_user$project$Util_ops['=>'],
+				'email',
+				_elm_lang$core$Json_Encode$string(user.email)),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_user$project$Util_ops['=>'],
+					'token',
+					_user$project$Data_AuthToken$encode(user.token)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_user$project$Util_ops['=>'],
+						'username',
+						_user$project$Data_User$encodeUsername(user.username)),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_user$project$Util_ops['=>'],
+							'bio',
+							A2(_elm_community$json_extra$Json_Encode_Extra$maybe, _elm_lang$core$Json_Encode$string, user.bio)),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Util_ops['=>'],
+								'createdAt',
+								_elm_lang$core$Json_Encode$string(user.createdAt)),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_user$project$Util_ops['=>'],
+									'updatedAt',
+									_elm_lang$core$Json_Encode$string(user.updatedAt)),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Data_User$User = F6(
+	function (a, b, c, d, e, f) {
+		return {email: a, token: b, username: c, bio: d, createdAt: e, updatedAt: f};
+	});
+var _user$project$Data_User$Username = function (a) {
+	return {ctor: 'Username', _0: a};
+};
+var _user$project$Data_User$usernameParser = A2(
+	_evancz$url_parser$UrlParser$custom,
+	'USERNAME',
+	function (_p6) {
+		return _elm_lang$core$Result$Ok(
+			_user$project$Data_User$Username(_p6));
+	});
+var _user$project$Data_User$usernameDecoder = A2(_elm_lang$core$Json_Decode$map, _user$project$Data_User$Username, _elm_lang$core$Json_Decode$string);
+var _user$project$Data_User$decoder = A3(
+	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+	'updatedAt',
+	_elm_lang$core$Json_Decode$string,
+	A3(
+		_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+		'createdAt',
+		_elm_lang$core$Json_Decode$string,
+		A3(
+			_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+			'bio',
+			_elm_lang$core$Json_Decode$nullable(_elm_lang$core$Json_Decode$string),
+			A3(
+				_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+				'username',
+				_user$project$Data_User$usernameDecoder,
+				A3(
+					_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+					'token',
+					_user$project$Data_AuthToken$decoder,
+					A3(
+						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
+						'email',
+						_elm_lang$core$Json_Decode$string,
+						_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Data_User$User)))))));
